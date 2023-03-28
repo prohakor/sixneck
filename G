@@ -1,0 +1,50 @@
+import tkinter
+import tkinter.font
+
+window=tkinter.Tk()
+window.title("오목")
+window.geometry("800x600+560+240")
+window.resizable(False,False)
+
+Main_frame=tkinter.Frame(window, relief="solid", bd=2)
+Main_frame.pack(sid="left", fill="both", expand=True)
+
+
+name_font=tkinter.font.Font(family="굴림", weight="bold", size=30)
+rule_font=tkinter.font.Font(family="굴림", weight="bold", size=30)
+start_font=tkinter.font.Font(family="굴림", weight="bold", size=30)
+time_font=tkinter.font.Font(family="굴림", weight="bold", size=15)
+bw_set_font=tkinter.font.Font(family="굴림", weight="bold", size=15)
+
+game_name=tkinter.Label(Main_frame, text="꿀 잼 오 목", font=name_font)
+
+game_time_set=tkinter.Text(Main_frame, width="10", height="1", font=time_font)
+
+game_bw_set=tkinter.Listbox(Main_frame, width="10", height="3", font=bw_set_font)
+game_bw_set.insert(0,"흑")
+game_bw_set.insert(1,"백")
+game_bw_set.insert(2, "랜덤")
+
+def open_rule(s):
+print(s)
+#메인 프레임 닫기
+#룰 설명 프레임 열기
+#룰 설명 프레임에 버튼 누르면 다시 메인프레임 열기
+
+
+game_start=tkinter.Button(Main_frame, text="게임 시작", font=start_font)
+game_rule=tkinter.Button(Main_frame, text="게임 설명", font=rule_font, command=lambda : open_rule(game_time_set.get("1.0","end-1c")))
+
+game_name.pack()
+game_time_set.pack()
+game_bw_set.pack()
+game_rule.pack()
+game_start.pack()
+
+game_start.place(x=180, y=120)
+game_rule.place(x=400, y=120)
+game_time_set.place(x=340, y=200)
+game_bw_set.place(x=340, y=255)
+
+
+window.mainloop()
